@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'submit_obituary' %}">Submit an Obituary</a></li>
+            <li><a href="{% url 'view_obituaries' %}">View Obituaries</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h1>Welcome to the Obituary Management Platform</h1>
+        <p><a href="{% url 'submit_obituary' %}" class="cta-button">Submit an Obituary</a></p>
+        <p><a href="{% url 'view_obituaries' %}" class="cta-button">View Obituaries</a></p>
+    </main>
+</body>
+</html>

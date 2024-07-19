@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obituaries</title>
+    <meta name="description" content="View submitted obituaries">
+    <meta name="keywords" content="obituaries, view obituaries">
+    <meta property="og:title" content="Obituaries">
+    <meta property="og:description" content="View submitted obituaries on our platform.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{% static 'images/og-image.jpg' %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:site_name" content="Obituary Platform">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Obituaries</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Date of Death</th>
+            <th>Content</th>
+            <th>Author</th>
+            <th>Submission Date</th>
+        </tr>
+        {% for obituary in obituaries %}
+        <tr>
+            <td>{{ obituary.name }}</td>
+            <td>{{ obituary.date_of_birth }}</td>
+            <td>{{ obituary.date_of_death }}</td>
+            <td>{{ obituary.content }}</td>
+            <td>{{ obituary.author }}</td>
+            <td>{{ obituary.submission_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- Add these inside the <body> tag or where you want the buttons to appear -->
+
+<div class="sharing-buttons">
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-facebook">Share on Facebook</a>
+    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-twitter">Share on Twitter</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-linkedin">Share on LinkedIn</a>
+    <li><a href="{% url 'home' %}">Home</a></li>
+</div>
+
+</body>
+</html>
